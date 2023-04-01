@@ -1,0 +1,43 @@
+function partyTime(guestList) {
+    let vipArray = [];
+    let regularArray = [];
+
+    for (let i = 0; i < guestList.length;) {
+        let customer = guestList[i];
+        if (customer === "PARTY") {
+            let party = guestList.shift();
+            break
+        };
+        // if (customer.split('')[0].charCodeAt() > 47 && customer.split('')[0].charCodeAt() <= 57) {
+        if (!isNaN(customer.split('')[0])) {
+            vipArray.push(guestList.shift());
+        } else {
+            regularArray.push(guestList.shift());
+        }
+    }
+    for (let el of guestList) {
+        if (vipArray.includes(el)) {
+            vipArray.splice(vipArray.indexOf(el), 1);
+        } else {
+            if (regularArray.includes(el)) {
+                regularArray.splice(regularArray.indexOf(el), 1);
+            }
+        }
+    }
+    let length = vipArray.length + regularArray.length;
+    console.log(length);
+    vipArray.forEach(g => console.log(g));
+    regularArray.forEach(g => console.log(g));
+
+}
+partyTime([
+    '7IK9Yo0h',
+    '9NoBUajQ',
+    'Ce8vwPmE',
+    'SVQXQCbc',
+    'tSzE5t0p',
+    'PARTY',
+    '9NoBUajQ',
+    'Ce8vwPmE',
+    'SVQXQCbc'
+])
